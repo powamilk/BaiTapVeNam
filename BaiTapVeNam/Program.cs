@@ -19,24 +19,66 @@ class Program
             {
                 case 1:
                     Console.Write("Nhập năm: ");
-                    int nam = int.Parse(Console.ReadLine());
-                    Console.WriteLine($"Tên gọi của năm {nam} là: {service.TenGoiCuaNam(nam)}");
+                    if (int.TryParse(Console.ReadLine(), out int nam))
+                    {
+                        string tenGoi = service.TenGoiCuaNam(nam);
+                        Console.WriteLine($"Tên gọi của năm {nam} là: {tenGoi}");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Dữ liệu nhập không hợp lệ. Vui lòng nhập số nguyên.");
+                    }
                     break;
                 case 2:
                     Console.Write("Nhập tháng: ");
-                    int thang = int.Parse(Console.ReadLine());
-                    Console.Write("Nhập năm: ");
-                    nam = int.Parse(Console.ReadLine());
-                    Console.WriteLine($"Số ngày trong tháng {thang}/{nam} là: {service.TimSoNgayCuaThang(thang, nam)}");
+                    if (int.TryParse(Console.ReadLine(), out int thang))
+                    {
+                        Console.Write("Nhập năm: ");
+                        if (int.TryParse(Console.ReadLine(), out int namThang))
+                        {
+                            int soNgay = service.TimSoNgayCuaThang(thang, namThang);
+                            if (soNgay == -1)
+                                Console.WriteLine("Tháng không hợp lệ.");
+                            else
+                                Console.WriteLine($"Số ngày của tháng {thang} năm {namThang} là: {soNgay}");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Dữ liệu nhập không hợp lệ. Vui lòng nhập số nguyên.");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Dữ liệu nhập không hợp lệ. Vui lòng nhập số nguyên.");
+                    }
                     break;
                 case 3:
                     Console.Write("Nhập ngày: ");
-                    int ngay = int.Parse(Console.ReadLine());
-                    Console.Write("Nhập tháng: ");
-                    thang = int.Parse(Console.ReadLine());
-                    Console.Write("Nhập năm: ");
-                    nam = int.Parse(Console.ReadLine());
-                    Console.WriteLine(service.KiemTraNgayHopLe(ngay, thang, nam));
+                    if (int.TryParse(Console.ReadLine(), out int ngay))
+                    {
+                        Console.Write("Nhập tháng: ");
+                        if (int.TryParse(Console.ReadLine(), out int thangNgay))
+                        {
+                            Console.Write("Nhập năm: ");
+                            if (int.TryParse(Console.ReadLine(), out int namNgay))
+                            {
+                                string ketQua = service.KiemTraNgayHopLe(ngay, thangNgay, namNgay);
+                                Console.WriteLine(ketQua);
+                            }
+                            else
+                            {
+                                Console.WriteLine("Dữ liệu nhập không hợp lệ. Vui lòng nhập số nguyên.");
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("Dữ liệu nhập không hợp lệ. Vui lòng nhập số nguyên.");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Dữ liệu nhập không hợp lệ. Vui lòng nhập số nguyên.");
+                    }
                     break;
                 case 4:
                     return;

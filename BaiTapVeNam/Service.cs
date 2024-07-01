@@ -43,9 +43,7 @@ namespace BaiTapVeNam
 
         public string KiemTraNgayHopLe(int ngay, int thang, int nam)
         {
-            if (nam <= 0 || thang <= 0 || ngay <= 0) return $"{ngay}/{thang}/{nam} không hợp lệ";
-
-            if (thang > 12) return $"{ngay}/{thang}/{nam} không hợp lệ";
+            if (nam <= 0 || thang <= 0 || ngay <= 0 || thang > 12) return $"{ngay}/{thang}/{nam} không hợp lệ";
 
             int soNgay = TimSoNgayCuaThang(thang, nam);
             if (ngay > soNgay) return $"{ngay}/{thang}/{nam} không hợp lệ";
