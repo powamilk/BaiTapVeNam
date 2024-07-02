@@ -13,6 +13,9 @@ namespace BaiTapVeNam
 
         public string TenGoiCuaNam(int nam)
         {
+            string[] CAN = { "Canh", "Tân", "Nhâm", "Quý", "Giáp", "Ất", "Bính", "Đinh", "Mậu", "Kỷ" };
+            string[] CHI = { "Thân", "Dậu", "Tuất", "Hợi", "Tý", "Sửu", "Dần", "Mão", "Thìn", "Tỵ", "Ngọ", "Mùi" };
+
             string can = CAN[nam % 10];
             string chi = CHI[nam % 12];
             return $"{can} {chi}";
